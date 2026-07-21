@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://4pqund3nukl7"]
+
+[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://character_body_2d.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_epypp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6ttw"]
+size = Vector2(127.5, 128)
+
+[node name="Node2D" type="Node2D" unique_id=384788707]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=94793455]
+script = ExtResource("1_0e48y")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D" unique_id=427481608]
+position = Vector2(310, 452)
+texture = ExtResource("2_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=857616209]
+position = Vector2(310, 452)
+shape = SubResource("RectangleShape2D_j6ttw")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1074373906]
+polygon = PackedVector2Array(-10, 18, 67, 604, 1098, 612, 1159, 10, 1175, 685, 2, 685)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D" unique_id=1599076790]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D/StaticBody2D" unique_id=1389681521]
+polygon = PackedVector2Array(2, 687, 1175, 687, 1158, 13, 1099, 610, 65, 605, -5, -6)
