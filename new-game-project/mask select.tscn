@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c01um0jv56q8p"]
+
+[ext_resource type="Texture2D" uid="uid://bxps8abpf6g34" path="res://assets/masks/volto blank.png" id="1_o1gqm"]
+[ext_resource type="Texture2D" uid="uid://cl6rljst01r7d" path="res://assets/masks/scaramouche blank.png" id="2_ytrfe"]
+[ext_resource type="Texture2D" uid="uid://dcv00bdlchfml" path="res://assets/masks/colombina blank.png" id="3_q4dky"]
+
+[node name="Node2D" type="Node2D" unique_id=546046049]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=55662239]
+
+[node name="MenuButton" type="MenuButton" parent="." unique_id=1677120228]
+offset_left = -150.0
+offset_top = -210.0
+offset_right = 158.0
+offset_bottom = 228.0
+action_mode = 1
+button_mask = 0
+keep_pressed_outside = true
+text = "volto"
+icon = ExtResource("1_o1gqm")
+icon_alignment = 1
+vertical_icon_alignment = 0
+switch_on_hover = true
+
+[node name="MenuButton2" type="MenuButton" parent="." unique_id=130751109]
+offset_left = -535.0
+offset_top = -208.0
+offset_right = -143.0
+offset_bottom = 236.0
+action_mode = 1
+button_mask = 0
+keep_pressed_outside = true
+text = "scaramouche"
+icon = ExtResource("2_ytrfe")
+icon_alignment = 1
+vertical_icon_alignment = 0
+switch_on_hover = true
+
+[node name="MenuButton3" type="MenuButton" parent="." unique_id=1005064191]
+offset_left = 56.0
+offset_top = -171.0
+offset_right = 664.0
+offset_bottom = 267.0
+action_mode = 1
+button_mask = 0
+keep_pressed_outside = true
+text = "colombina"
+icon = ExtResource("3_q4dky")
+icon_alignment = 1
+vertical_icon_alignment = 0
+switch_on_hover = true

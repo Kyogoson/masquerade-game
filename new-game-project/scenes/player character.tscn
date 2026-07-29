@@ -1,22 +1,26 @@
 [gd_scene format=3 uid="uid://dmk67elyyv33e"]
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scripts/character_body_2d.gd" id="1_qf2gt"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_by3g2"]
+[ext_resource type="Texture2D" uid="uid://fwml5lojykjc" path="res://assets/player scaramouche.png" id="2_ucoaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1mgu"]
-size = Vector2(128, 128)
+size = Vector2(145, 355)
 
 [node name="Node2D" type="Node2D" unique_id=1953226047]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1746350558]
-position = Vector2(206, 136)
+position = Vector2(205, 137)
 script = ExtResource("1_qf2gt")
 
-[node name="Icon" type="Sprite2D" parent="CharacterBody2D" unique_id=1321261833]
-texture = ExtResource("2_by3g2")
+[node name="scaramouche" type="Sprite2D" parent="CharacterBody2D" unique_id=1321261833]
+position = Vector2(-211, -136.00002)
+scale = Vector2(0.859375, 0.9244792)
+texture = ExtResource("2_ucoaj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1558661635]
+position = Vector2(-206, -136)
 shape = SubResource("RectangleShape2D_h1mgu")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=926683623]
+position = Vector2(-206, -135)
 zoom = Vector2(0.5, 0.5)
