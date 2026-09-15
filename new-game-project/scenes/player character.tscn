@@ -1,26 +1,156 @@
 [gd_scene format=3 uid="uid://dmk67elyyv33e"]
 
-[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scripts/character_body_2d.gd" id="1_qf2gt"]
-[ext_resource type="Texture2D" uid="uid://fwml5lojykjc" path="res://assets/player scaramouche.png" id="2_ucoaj"]
+[ext_resource type="Texture2D" uid="uid://brukigse4faik" path="res://assets/placeholders/knight/IDLE.png" id="2_ucoaj"]
+[ext_resource type="Texture2D" uid="uid://dkrvhcliwm2u8" path="res://assets/placeholders/knight/JUMP.png" id="3_0rf4q"]
+
+[sub_resource type="GDScript" id="GDScript_jsxe6"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 100.0
+const JUMP_VELOCITY = -100.0
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1mgu"]
-size = Vector2(145, 355)
+size = Vector2(26, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rf4q"]
+atlas = ExtResource("2_ucoaj")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk6lm"]
+atlas = ExtResource("2_ucoaj")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvr45"]
+atlas = ExtResource("2_ucoaj")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp710"]
+atlas = ExtResource("2_ucoaj")
+region = Rect2(288, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwrr7"]
+atlas = ExtResource("2_ucoaj")
+region = Rect2(384, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmlgo"]
+atlas = ExtResource("2_ucoaj")
+region = Rect2(480, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpj8a"]
+atlas = ExtResource("2_ucoaj")
+region = Rect2(576, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doun0"]
+atlas = ExtResource("3_0rf4q")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfqaj"]
+atlas = ExtResource("3_0rf4q")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mysy"]
+atlas = ExtResource("3_0rf4q")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c5hg"]
+atlas = ExtResource("3_0rf4q")
+region = Rect2(288, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhuwg"]
+atlas = ExtResource("3_0rf4q")
+region = Rect2(384, 0, 96, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1mgu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rf4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk6lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvr45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp710")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwrr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmlgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpj8a")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doun0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfqaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mysy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c5hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhuwg")
+}],
+"loop": 1,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"Run",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D" unique_id=1953226047]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1746350558]
-position = Vector2(205, 137)
-script = ExtResource("1_qf2gt")
-
-[node name="scaramouche" type="Sprite2D" parent="CharacterBody2D" unique_id=1321261833]
-position = Vector2(-211, -136.00002)
-scale = Vector2(0.859375, 0.9244792)
-texture = ExtResource("2_ucoaj")
+position = Vector2(206, 60)
+script = SubResource("GDScript_jsxe6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1558661635]
-position = Vector2(-206, -136)
+position = Vector2(-208, -56)
 shape = SubResource("RectangleShape2D_h1mgu")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=926683623]
-position = Vector2(-206, -135)
-zoom = Vector2(0.5, 0.5)
+position = Vector2(-208, -75)
+zoom = Vector2(4, 4)
+
+[node name="knight" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1695726893]
+position = Vector2(-208, -58)
+sprite_frames = SubResource("SpriteFrames_h1mgu")
+animation = &"Idle"

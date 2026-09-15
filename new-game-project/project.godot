@@ -23,10 +23,11 @@ window/stretch/aspect="expand"
 [physics]
 
 3d/physics_engine="Jolt Physics"
-2d/default_gravity=848.2420000000002
+2d/default_gravity=170.0
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
