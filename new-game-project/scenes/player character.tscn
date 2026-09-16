@@ -2,19 +2,27 @@
 
 [ext_resource type="Texture2D" uid="uid://brukigse4faik" path="res://assets/placeholders/knight/IDLE.png" id="2_ucoaj"]
 [ext_resource type="Texture2D" uid="uid://dkrvhcliwm2u8" path="res://assets/placeholders/knight/JUMP.png" id="3_0rf4q"]
+[ext_resource type="Texture2D" uid="uid://jues5jsrdqoo" path="res://assets/placeholders/knight/RUN.png" id="3_nk6lm"]
 
 [sub_resource type="GDScript" id="GDScript_jsxe6"]
 script/source = "extends CharacterBody2D
 
+@onready var knight: AnimatedSprite2D = $knight
 
 const SPEED = 100.0
-const JUMP_VELOCITY = -100.0
+const JUMP_VELOCITY = -110.0
 
 
 func _physics_process(delta: float) -> void:
+	#add animations.
+	if velocity.x > 1 or velocity.x < -1:
+		knight.animation = \"Run\"
+	else:
+		knight.animation = \"Idle\"
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		knight.animation = \"Jump\"
 
 	# Handle jump.
 	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
@@ -29,6 +37,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	if direction == 1:
+		knight.flip_h = false
+	elif direction == -1:
+		knight.flip_h = true
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1mgu"]
@@ -82,6 +95,38 @@ region = Rect2(288, 0, 96, 84)
 atlas = ExtResource("3_0rf4q")
 region = Rect2(384, 0, 96, 84)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsxe6"]
+atlas = ExtResource("3_nk6lm")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvgpw"]
+atlas = ExtResource("3_nk6lm")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kle4r"]
+atlas = ExtResource("3_nk6lm")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqh7n"]
+atlas = ExtResource("3_nk6lm")
+region = Rect2(288, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js1b4"]
+atlas = ExtResource("3_nk6lm")
+region = Rect2(384, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3nqo"]
+atlas = ExtResource("3_nk6lm")
+region = Rect2(480, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd7mq"]
+atlas = ExtResource("3_nk6lm")
+region = Rect2(576, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4vy3"]
+atlas = ExtResource("3_nk6lm")
+region = Rect2(672, 0, 96, 84)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h1mgu"]
 animations = [{
 "frames": [{
@@ -108,7 +153,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Idle",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -128,12 +173,36 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Jump",
-"speed": 5.0
+"speed": 7.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsxe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvgpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kle4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqh7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js1b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3nqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd7mq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4vy3")
+}],
 "loop": 1,
 "name": &"Run",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [node name="Node2D" type="Node2D" unique_id=1953226047]
@@ -153,4 +222,5 @@ zoom = Vector2(4, 4)
 [node name="knight" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1695726893]
 position = Vector2(-208, -58)
 sprite_frames = SubResource("SpriteFrames_h1mgu")
-animation = &"Idle"
+animation = &"Run"
+autoplay = "Idle"

@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://dprocaocwaa2g"]
+
+[ext_resource type="Texture2D" uid="uid://00gjhkmoygwv" path="res://assets/placeholders/Monsters_Creatures_Fantasy/Monsters_Creatures_Fantasy/Mushroom/Idle.png" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://dsn6u00bu4dei" path="res://scripts/enemy.gd" id="1_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://bcaf08loq0qpq" path="res://assets/placeholders/Monsters_Creatures_Fantasy/Monsters_Creatures_Fantasy/Mushroom/Run.png" id="2_qi2p4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iifgy"]
+atlas = ExtResource("1_4gyqm")
+region = Rect2(63, 64, 25, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg4t"]
+atlas = ExtResource("1_4gyqm")
+region = Rect2(213, 64, 25, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yqyl"]
+atlas = ExtResource("1_4gyqm")
+region = Rect2(363, 64, 25, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wujgv"]
+atlas = ExtResource("1_4gyqm")
+region = Rect2(513, 64, 25, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb8ge"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(62, 62, 26, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1ltt"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(212, 62, 26, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxifv"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(362, 62, 26, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwjut"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(512, 62, 26, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0g06"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(662, 62, 26, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar8e5"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(812, 62, 26, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doop2"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(962, 62, 26, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hcft"]
+atlas = ExtResource("2_qi2p4")
+region = Rect2(1112, 62, 26, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1mgu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iifgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yqyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wujgv")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb8ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1ltt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxifv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwjut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0g06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar8e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doop2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hcft")
+}],
+"loop": 1,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1pi2"]
+size = Vector2(24, 37)
+
+[node name="Mushroom" type="Area2D" unique_id=1193031954]
+script = ExtResource("1_4ra3w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=367126498]
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_h1mgu")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 1
+frame_progress = 0.48194444
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1719309515]
+position = Vector2(2, -1.5)
+shape = SubResource("RectangleShape2D_y1pi2")
+
+[node name="Timer" type="Timer" parent="." unique_id=1517998541]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
