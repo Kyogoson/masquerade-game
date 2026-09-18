@@ -10,7 +10,7 @@ script/source = "extends CharacterBody2D
 @onready var knight: AnimatedSprite2D = $knight
 
 const SPEED = 100.0
-const JUMP_VELOCITY = -110.0
+const JUMP_VELOCITY = -120.0
 
 
 func _physics_process(delta: float) -> void:
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1mgu"]
-size = Vector2(26, 34)
+size = Vector2(25, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rf4q"]
 atlas = ExtResource("2_ucoaj")
@@ -207,20 +207,20 @@ animations = [{
 
 [node name="Node2D" type="Node2D" unique_id=1953226047]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1746350558]
+[node name="Player character" type="CharacterBody2D" parent="." unique_id=1746350558]
 position = Vector2(206, 60)
 script = SubResource("GDScript_jsxe6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1558661635]
-position = Vector2(-208, -56)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player character" unique_id=1558661635]
+position = Vector2(-208.5, -56)
 shape = SubResource("RectangleShape2D_h1mgu")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=926683623]
+[node name="Camera2D" type="Camera2D" parent="Player character" unique_id=926683623]
 position = Vector2(-208, -75)
 zoom = Vector2(4, 4)
 
-[node name="knight" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1695726893]
+[node name="knight" type="AnimatedSprite2D" parent="Player character" unique_id=1695726893]
 position = Vector2(-208, -58)
 sprite_frames = SubResource("SpriteFrames_h1mgu")
-animation = &"Run"
+animation = &"Idle"
 autoplay = "Idle"

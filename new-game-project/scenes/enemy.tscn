@@ -108,18 +108,16 @@ size = Vector2(24, 37)
 script = ExtResource("1_4ra3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=367126498]
-position = Vector2(2, 0)
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_h1mgu")
-animation = &"Idle"
-autoplay = "Idle"
-frame = 1
-frame_progress = 0.48194444
+animation = &"Run"
+autoplay = "Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1719309515]
-position = Vector2(2, -1.5)
 shape = SubResource("RectangleShape2D_y1pi2")
 
 [node name="Timer" type="Timer" parent="." unique_id=1517998541]
 autostart = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
